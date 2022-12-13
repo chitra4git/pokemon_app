@@ -1,6 +1,6 @@
 const express = require ('express');
 const app = express();
-const pokemon = require('./models/pokemon')
+const pokemon = require('./models/pokemon.js')
 
 //setup Show.jsx file
 app.set('view engine', 'jsx');
@@ -17,6 +17,16 @@ app.get('/',(req,res) => {
 app.get('/pokemon', (req, res) => {
     res.render("Index",{pokemons:pokemon})
 });
+
+//New Route
+
+app.get('/pokemon/:indexOfPokemonArray',(req,res) => {
+
+    res.render("Show",{pokemons:pokemon[req.params.indexOfPokemonArray]})
+
+});
+
+
 
 
 
