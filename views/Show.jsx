@@ -8,7 +8,7 @@ function Show({pokemons}) {
         <h1>Gotta Catch 'Em All</h1>
         <h2>{pokemons.name}</h2>
         <img src={`${pokemons.img}.jpg`}/>
-        <a href={`/pokemon`}>Back</a>
+        <a href='/pokemon'>Back</a>
 
         </div>
     )
