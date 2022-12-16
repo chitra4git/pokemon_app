@@ -1,62 +1,44 @@
-const React = require ('react');
-
-const myStyle = {
-    color: '#ffffff',
-    backgroundColor: '#000000',
-  };
+import React, { Component } from "react";
 
 
-class Index extends React.Component {
+export default class Index extends Component {
   render() {
+    
+    const pokemon = this.props.pokemon;
 
-  console.log(this.props.pokemon)
-      return (
-        <div>
-        <nav>
-          <a href="/pokemon/new"> Create a New pokemon</a>
-        </nav>
+    console.log(pokemon);
 
-          <h1 style={myStyle}>See All The Pokemon!</h1>
-         
-          <ul>
-          {this.props.pokemons.map((pokemon, i) => {
-              return (
-                <li key = {i}>
-                  The <a href={`/pokemon/${i}`}> {pokemon.name} </a> is{" "}
-                  {pokemon.img}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      );
-    }
+    return (
+      <html>
+        <body>
+          <nav>
+            <a href='/pokemon/new'> Create a New Pokemon</a>
+          </nav>
+          <h1>Pokedex</h1>
+          {pokemon.map((p) => {
+            return(
+              <li>
+              <a href={`/pokemon/${p.id}`}>
+                {p.name} <br/>
+              </a>
+              <br />
+              <form action={`/pokemon/${p.id}?_method=DELETE`} method="POST">
+                <input type='submit' value='DELETE'/>
+              </form>
+              <br/>
+              <nav>
+              <a href={`/pokemon/${p.id}/edit`}>Edit this Pokemon</a>
+              </nav>
+              <br/>
+              </li>
+            );
+          })}
+          <a href=''></a>
+        </body>
+      </html>
+    );
   }
+}
+  
+module.exports = Index;
 
-//   import React, { Component } from 'react'
-  
-//   export default class  extends Component {
-//     render() {
-//         console.log(this.prop.pokemon)
-//         const pokemon = this.prop.pokemon
-//       return (
-//         <div>
-//             <h1>All Pokemon</h1>
-//         {
-//             pokemon.map((p,id)=>{
-//                 return(
-//                     <a herf = {`/pokemon/${id}`}>
-//                         <li>{p.name}</li>
-//                     </a>
-//                 )
-//             })
-//         }
-
-//         </div>
-//       )
-//     }
-//   }
-  
-  
-  module.exports = Index;
-  

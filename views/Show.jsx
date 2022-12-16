@@ -1,17 +1,20 @@
-import React from 'react'
-import pokemon from '../models/pokemon'
+import React, { Component } from 'react'
 
-function Show({pokemons}) {
-
-    return(
-        <div>
-        <h1>Gotta Catch 'Em All</h1>
-        <h2>{pokemons.name}</h2>
-        <img src={`${pokemons.img}.jpg`}/>
-        <a href='/pokemon'>Back</a>
-
-        </div>
+ class Show extends Component {
+  render() {
+    const pokemon = this.props.pokemon
+    console.log(this.props.pokemon)
+    return (
+      <div>
+        <nav>
+          <a href='/pokemon'>Pokedex</a>
+        </nav>
+        <h1>{pokemon.name}</h1>
+        <img src={`${pokemon.image}.jpg`} alt ={`${pokemon.name}'s Picture`}/>
+        {/* <a href='/pokemon'>Home Page</a> */}
+        {/* <a href='/pokemon'>Pokedex</a> */}
+      </div>
     )
+  }
 }
-
 export default Show
